@@ -1,0 +1,22 @@
+<input
+  type="text"
+  class="form-control"
+  id="categorieName"
+  required
+  [(ngModel)]="categorieName"
+  name="categorieName"
+/>
+
+<button type="button" class="btn btn-primary mt-3" (click)="searchCategories()">
+  Get Categories
+</button>
+
+<div class="flex flex-column">
+  @for (categorie of categories; track $index) {
+    <div
+      class="min-w-2xl m-5 block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100"
+    >
+      <h3>{{ categorie.name }}</h3>
+    </div>
+  }
+</div>
