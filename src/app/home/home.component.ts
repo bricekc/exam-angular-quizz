@@ -27,7 +27,8 @@ export class HomeComponent implements OnInit {
     return this.playerName.length < 1;
   }
 
-  navigateToQuiz() {
+  navigateToCategory() {
+    this.authService.playerName = this.playerName
     this.router.navigate(['/categories']);
   }
 
