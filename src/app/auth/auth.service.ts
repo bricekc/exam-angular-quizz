@@ -6,6 +6,7 @@ import { HttpClient } from "@angular/common/http";
 })
 export class AuthService {
   user: { id: number; username: string; } | undefined;
+  playerName!: string;
 
   constructor(private http: HttpClient) { }
 

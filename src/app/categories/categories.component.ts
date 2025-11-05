@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { QuizService } from '../shared/services/quiz.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-categories',
@@ -10,7 +11,7 @@ import { QuizService } from '../shared/services/quiz.service';
 export class CategoriesComponent implements OnInit {
   categories = this.quizService.categories;
   categorieName: string = '';
-  constructor(private quizService: QuizService) {}
+  constructor(private quizService: QuizService, private router: Router) {}
 
   searchCategories() {
     console.log(this.categories);
@@ -28,5 +29,9 @@ export class CategoriesComponent implements OnInit {
     this.quizService.getCategories().subscribe((categories: any) => {
       this.categories = categories;
     });
+  }
+
+  gotToQuizz(categorieId: string) {
+    this.router.navigate(['/quiz', categorieId]);
   }
 }
