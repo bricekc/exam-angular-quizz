@@ -69,8 +69,4 @@ export class QuizService {
     this.score = 0;
     this.isQuizFinished = false;
   }
-
-  getCategories() {
-    return this.http.get('http://localhost:3000/categories');
-  }
 }

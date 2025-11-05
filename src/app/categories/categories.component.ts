@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { QuizService } from '../shared/services/quiz.service';
 import { Router } from '@angular/router';
+import { CategoryService } from '../shared/services/category.service';
 
 @Component({
   selector: 'app-categories',
@@ -9,25 +9,29 @@ import { Router } from '@angular/router';
   styleUrl: './categories.component.scss',
 })
 export class CategoriesComponent implements OnInit {
-  categories = this.quizService.categories;
-  categorieName: string = '';
-  constructor(private quizService: QuizService, private router: Router) {}
+  categories!: any[];
+  private categoryCopy!: any[];
+  categoryName: string = '';
+  constructor(
+    private categoryService: CategoryService,
+    private router: Router,
+  ) {}
 
   searchCategories() {
-    console.log(this.categories);
-    this.categories = this.categories.filter((category) =>
-      category.name.toLowerCase().includes(this.categorieName.toLowerCase()),
+    this.categories = this.categoryCopy.filter((category) =>
+      category.name.toLowerCase().includes(this.categoryName.toLowerCase()),
     );
   }
 
   clearSearch() {
-    this.categorieName = '';
+    this.categoryName = '';
     this.ngOnInit();
   }
 
   ngOnInit(): void {
-    this.quizService.getCategories().subscribe((categories: any) => {
+    this.categoryService.getCategories().subscribe((categories: any) => {
       this.categories = categories;
+      this.categoryCopy = categories;
     });
   }
 

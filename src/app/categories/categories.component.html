@@ -3,7 +3,7 @@
   class="form-control border border-gray-300 rounded-lg p-2 mt-2"
   id="categorieName"
   required
-  [(ngModel)]="categorieName"
+  [(ngModel)]="categoryName"
   name="categorieName"
 />
 
@@ -12,6 +12,7 @@
     type="button"
     class="btn btn-primary mt-3"
     (click)="searchCategories()"
+    [disabled]="categoryName.length === 0"
   >
     Search
   </button>
@@ -21,12 +22,12 @@
 </div>
 
 <div class="flex flex-column">
-  @for (categorie of categories; track $index) {
+  @for (category of categories; track $index) {
     <div
       class="cursor-pointer min-w-3xs m-5 block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100"
-      (click)="gotToQuizz(categorie.id)"
+      (click)="gotToQuizz(category.id)"
     >
-      <h3>{{ categorie.name }}</h3>
+      <h3>{{ category.name }}</h3>
     </div>
   }
 </div>
