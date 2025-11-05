@@ -9,7 +9,6 @@ export class QuizService {
   playerAnswers: { questionId: number; answer: string }[] = [];
   score = 0;
   isQuizFinished = false;
-  playerName: string = '';
   categories: any[] = [];
 
   constructor(private http: HttpClient) {}
@@ -46,9 +45,9 @@ export class QuizService {
     this.playerAnswers.push({ questionId, answer });
   }
 
-  getQuizContent() {
+  getQuizByCategory(categoryId: number) {
     this.http
-      .get('http://localhost:3000/questions')
+      .get('http://localhost:3000/questions?categoryId=' + categoryId)
       .subscribe((questions: any) => {
         for (const question of questions) {
           this.http
