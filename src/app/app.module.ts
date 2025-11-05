@@ -15,6 +15,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './auth/register/register.component';
 import { LoginComponent } from './auth/login/login.component';
 import { CategoriesComponent } from './categories/categories.component';
+import { CategoryCounterComponent } from './categories/category-counter/category-counter.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { CategoriesComponent } from './categories/categories.component';
     LoginComponent,
     RegisterComponent,
     CategoriesComponent,
+    CategoryCounterComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [provideHttpClient()],

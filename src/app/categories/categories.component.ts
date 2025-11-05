@@ -9,9 +9,10 @@ import { CategoryService } from '../shared/services/category.service';
   styleUrl: './categories.component.scss',
 })
 export class CategoriesComponent implements OnInit {
-  categories!: any[];
+  categories: any[] = []
   private categoryCopy!: any[];
   categoryName: string = '';
+
   constructor(
     private categoryService: CategoryService,
     private router: Router,
