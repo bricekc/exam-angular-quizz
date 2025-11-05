@@ -1,7 +1,7 @@
 <ul class="answer_container">
   <li *ngFor="let answer of answers; let j = index">
     <button
-      [disabled]="isQuizFinished"
+      [disabled]="isQuizFinished()"
       (click)="addAnswer(answer?.answerLabel)"
       [class.answer_container--selected]="isAnswerSelected(answer?.answerLabel, questionId)"
     >

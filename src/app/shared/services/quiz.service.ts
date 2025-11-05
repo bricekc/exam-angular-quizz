@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -8,7 +8,7 @@ export class QuizService {
   quizContent: any[] = [];
   playerAnswers: { questionId: number; answer: string }[] = [];
   score = 0;
-  isQuizFinished = false;
+  isQuizFinished = signal(false);
   categories: any[] = [];
 
   constructor(private http: HttpClient) {}
@@ -31,7 +31,7 @@ export class QuizService {
         }
       }
     }
-    this.isQuizFinished = true;
+    this.isQuizFinished.set(true);
   }
 
   addAnswer(answer: string, questionId: number) {
@@ -67,6 +67,6 @@ export class QuizService {
     this.quizContent = [];
     this.playerAnswers = [];
     this.score = 0;
-    this.isQuizFinished = false;
+    this.isQuizFinished.set(false);
   }
 }
