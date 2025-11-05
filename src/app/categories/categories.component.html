@@ -1,15 +1,24 @@
 <input
   type="text"
-  class="form-control"
+  class="form-control border border-gray-300 rounded-lg p-2 mt-2"
   id="categorieName"
   required
   [(ngModel)]="categorieName"
   name="categorieName"
 />
 
-<button type="button" class="btn btn-primary mt-3" (click)="searchCategories()">
-  Get Categories
-</button>
+<div class="flex gap-3">
+  <button
+    type="button"
+    class="btn btn-primary mt-3"
+    (click)="searchCategories()"
+  >
+    Search
+  </button>
+  <button type="button" class="btn btn-primary mt-3" (click)="clearSearch()">
+    Annuler la recherche
+  </button>
+</div>
 
 <div class="flex flex-column">
   @for (categorie of categories; track $index) {

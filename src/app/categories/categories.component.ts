@@ -14,9 +14,14 @@ export class CategoriesComponent implements OnInit {
 
   searchCategories() {
     console.log(this.categories);
-    this.quizService.getCategories().subscribe((categories: any) => {
-      this.categories = categories;
-    });
+    this.categories = this.categories.filter((category) =>
+      category.name.toLowerCase().includes(this.categorieName.toLowerCase()),
+    );
+  }
+
+  clearSearch() {
+    this.categorieName = '';
+    this.ngOnInit();
   }
 
   ngOnInit(): void {
